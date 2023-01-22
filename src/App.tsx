@@ -6,11 +6,12 @@
  * 3. 상속받는 애니메이션
  * 4. 자식 애니메이션 컨트롤
  * 5. Gestures
- * 6. Drag
+ * 6. Drag, 제약
  */
 
 import styled from "styled-components";
-import { motion, Variants } from "framer-motion";
+import { motion, useMotionValue, Variants } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 // TODO: Variants
 const myVars = {
@@ -70,6 +71,12 @@ const gestureVariants = {
 };
 
 function App() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  let x = useMotionValue(0);
+  useEffect(() => {
+    x.onChange(() => console.log(x.get()));
+  }, [x]);
+
   return (
     <Grid>
       {/* TODO: animate */}
@@ -102,17 +109,24 @@ function App() {
 
       {/* TODO: drag */}
       <Wrapper>
-        <Box
-          drag
-          variants={gestureVariants}
-          whileHover={"hover"}
-          whileDrag={{
-            backgroundColor: "#fbc531",
-            transition: { duration: 1 },
-          }}
-          whileTap={"click"}
-        ></Box>
+        <Container ref={containerRef}>
+          <Box
+            drag
+            // dragSnapToOrigin
+            dragConstraints={containerRef}
+            whileDrag={{
+              backgroundColor: "#fbc531",
+              transition: { duration: 1 },
+            }}
+          ></Box>
+        </Container>
         <span>Drag</span>
+      </Wrapper>
+
+      {/* TODO: MotionValue */}
+      <Wrapper>
+        <Box drag="x" style={{ x }} dragSnapToOrigin />
+        <span>motionValue</span>
       </Wrapper>
     </Grid>
   );
@@ -141,6 +155,17 @@ const Wrapper = styled.div`
     font-weight: 700;
     color: white;
   }
+`;
+
+const Container = styled.div`
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 `;
 
 const Box = styled(motion.div)`
