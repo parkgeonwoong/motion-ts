@@ -8,32 +8,44 @@
  * 5. Gestures
  * 6. Drag, 제약
  * 7. MotionValue
+ * 8. Scroll Animation
  */
 
 import styled from "styled-components";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
 import { useEffect } from "react";
 
 import { Animation } from "./Components/Animation";
 import { Variants } from "./Components/Variants";
 import { Gestures } from "./Components/Gestures";
 import { Drag } from "./Components/Drag";
+import { MotionValue } from "./Components/MotionValue";
+import { ScrollView } from "./Components/ScrollView";
 import { Box, Wrapper } from "./Components/Style";
 
 // TODO: Variants
 
 function App() {
   let x = useMotionValue(0);
-  const scaleTrans = useTransform(x, [-400, 0, 400], [0.1, 1, 2]);
+
+  const gradient = useTransform(
+    x,
+    [-600, 0, 600],
+    [
+      "linear-gradient(135deg,#0083ee,#00eeea)",
+      "linear-gradient(135deg,#ee0099,#dd00ee)",
+      "linear-gradient(135deg,#00ee8f,#d6ee00)",
+    ]
+  );
 
   // 값을 확인하는 용도
   // useEffect(() => {
   //   // x.onChange(() => console.log(x.get()));
-  //   scaleTrans.onChange(() => console.log(x.get()));
+  //   Trans.onChange(() => console.log(x.get()));
   // }, [x]);
 
   return (
-    <Grid>
+    <Grid style={{ background: gradient }}>
       {/* TODO: animate */}
       <Animation />
 
@@ -47,20 +59,20 @@ function App() {
       <Drag />
 
       {/* TODO: MotionValue */}
-      <Wrapper>
-        <Box drag="x" style={{ x, scale: scaleTrans }} dragSnapToOrigin />
-        <span>motionValue</span>
-      </Wrapper>
+      <MotionValue x={x} />
+
+      {/* TODO: Scroll animation */}
+      <ScrollView />
     </Grid>
   );
 }
 
-const Grid = styled.div`
+const Grid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 50vh);
   grid-gap: 20px;
-  height: 100vh;
+  height: 150vh;
   width: 100vw;
   place-items: center;
 `;

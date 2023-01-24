@@ -58,7 +58,7 @@ box-sizing: border-box;
 body {
 font-family: 'Source Sans Pro', sans-serif ;
 line-height: 1.3;
-background:linear-gradient(135deg,#e09,#d0e);
+/* background:linear-gradient(135deg,#e09,#d0e); */
 }
 a {
 text-decoration: none;
