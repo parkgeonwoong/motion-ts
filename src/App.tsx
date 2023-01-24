@@ -7,71 +7,22 @@
  * 4. 자식 애니메이션 컨트롤
  * 5. Gestures
  * 6. Drag, 제약
+ * 7. MotionValue
  */
 
 import styled from "styled-components";
-import { motion, useMotionValue, Variants } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useMotionValue } from "framer-motion";
+import { useEffect } from "react";
+
+import { Animation } from "./Components/Animation";
+import { Variants } from "./Components/Variants";
+import { Gestures } from "./Components/Gestures";
+import { Drag } from "./Components/Drag";
+import { Box, Wrapper } from "./Components/Style";
 
 // TODO: Variants
-const myVars = {
-  start: { scale: 0 },
-  end: {
-    scale: 1,
-    rotateZ: 360,
-    transition: {
-      type: "spring",
-      duration: 2.5,
-      repeat: Infinity,
-      repeatDelay: 1,
-    },
-  },
-};
-
-const boxVariants: Variants = {
-  start: {
-    scale: 0,
-    opacity: 0,
-  },
-  end: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 1.2,
-      bounce: 0.5,
-      // TODO: 자식 애니메이션까지 컨트롤
-      delayChildren: 0.3,
-      staggerChildren: 0.3,
-      repeat: Infinity,
-      repeatDelay: 2,
-    },
-  },
-};
-
-const circleVariants = {
-  start: {
-    opacity: 0,
-    y: 20,
-  },
-  end: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      repeat: Infinity,
-      repeatDelay: 1,
-    },
-  },
-};
-
-const gestureVariants = {
-  hover: { scale: 1.2, rotateZ: 90 },
-  click: { scale: 1, borderRadius: "100px" },
-};
 
 function App() {
-  const containerRef = useRef<HTMLDivElement>(null);
   let x = useMotionValue(0);
   useEffect(() => {
     x.onChange(() => console.log(x.get()));
@@ -80,48 +31,16 @@ function App() {
   return (
     <Grid>
       {/* TODO: animate */}
-      <Wrapper>
-        <Box variants={myVars} initial="start" animate="end" />
-        <span>Animation</span>
-      </Wrapper>
+      <Animation />
 
       {/* TODO: 상속  */}
-      <Wrapper>
-        <Box variants={boxVariants} initial="start" animate="end">
-          {/* TODO: 부모의 initial, animate를 상속받는데 variants만 지정 */}
-          <Circle variants={circleVariants} />
-          <Circle variants={circleVariants} />
-          <Circle variants={circleVariants} />
-          <Circle variants={circleVariants} />
-        </Box>
-        <span>Variants</span>
-      </Wrapper>
+      <Variants />
 
       {/* TODO: gesture */}
-      <Wrapper>
-        <Box
-          variants={gestureVariants}
-          whileHover={"hover"}
-          whileTap={"click"}
-        ></Box>
-        <span>Gestures</span>
-      </Wrapper>
+      <Gestures />
 
       {/* TODO: drag */}
-      <Wrapper>
-        <Container ref={containerRef}>
-          <Box
-            drag
-            // dragSnapToOrigin
-            dragConstraints={containerRef}
-            whileDrag={{
-              backgroundColor: "#fbc531",
-              transition: { duration: 1 },
-            }}
-          ></Box>
-        </Container>
-        <span>Drag</span>
-      </Wrapper>
+      <Drag />
 
       {/* TODO: MotionValue */}
       <Wrapper>
@@ -140,51 +59,6 @@ const Grid = styled.div`
   height: 100vh;
   width: 100vw;
   place-items: center;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px 0px;
-
-  span {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-  }
-`;
-
-const Container = styled.div`
-  width: 300px;
-  height: 300px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-`;
-
-const Box = styled(motion.div)`
-  width: 150px;
-  height: 150px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  background-color: white;
-  border-radius: 30px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
-`;
-
-const Circle = styled(motion.div)`
-  background-color: #fbc531;
-  height: 60px;
-  width: 60px;
-  place-self: center;
-  border-radius: 50%;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
 export default App;
