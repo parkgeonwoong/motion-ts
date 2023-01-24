@@ -11,7 +11,7 @@
  */
 
 import styled from "styled-components";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect } from "react";
 
 import { Animation } from "./Components/Animation";
@@ -24,9 +24,13 @@ import { Box, Wrapper } from "./Components/Style";
 
 function App() {
   let x = useMotionValue(0);
-  useEffect(() => {
-    x.onChange(() => console.log(x.get()));
-  }, [x]);
+  const scaleTrans = useTransform(x, [-400, 0, 400], [0.1, 1, 2]);
+
+  // 값을 확인하는 용도
+  // useEffect(() => {
+  //   // x.onChange(() => console.log(x.get()));
+  //   scaleTrans.onChange(() => console.log(x.get()));
+  // }, [x]);
 
   return (
     <Grid>
@@ -44,7 +48,7 @@ function App() {
 
       {/* TODO: MotionValue */}
       <Wrapper>
-        <Box drag="x" style={{ x }} dragSnapToOrigin />
+        <Box drag="x" style={{ x, scale: scaleTrans }} dragSnapToOrigin />
         <span>motionValue</span>
       </Wrapper>
     </Grid>
