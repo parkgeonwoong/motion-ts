@@ -9,6 +9,7 @@
  * 6. Drag, 제약
  * 7. MotionValue
  * 8. Scroll Animation
+ * 9. SVG Animation
  */
 
 import styled from "styled-components";
@@ -21,7 +22,7 @@ import { Gestures } from "./Components/Gestures";
 import { Drag } from "./Components/Drag";
 import { MotionValue } from "./Components/MotionValue";
 import { ScrollView } from "./Components/ScrollView";
-import { Box, Wrapper } from "./Components/Style";
+import { SvgPath } from "./Components/SvgPath";
 
 // TODO: Variants
 
@@ -33,8 +34,8 @@ function App() {
     [-600, 0, 600],
     [
       "linear-gradient(135deg,#0083ee,#00eeea)",
-      "linear-gradient(135deg,#ee0099,#dd00ee)",
-      "linear-gradient(135deg,#00ee8f,#d6ee00)",
+      "linear-gradient(135deg,#ee0099,#7700ee)",
+      "linear-gradient(135deg,#00eeab,#eeba00)",
     ]
   );
 
@@ -55,14 +56,17 @@ function App() {
       {/* TODO: gesture */}
       <Gestures />
 
-      {/* TODO: drag */}
-      <Drag />
+      {/* TODO: Svg animation */}
+      <SvgPath />
 
       {/* TODO: MotionValue */}
       <MotionValue x={x} />
 
       {/* TODO: Scroll animation */}
       <ScrollView />
+
+      {/* TODO: drag */}
+      <Drag />
     </Grid>
   );
 }
@@ -70,9 +74,9 @@ function App() {
 const Grid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 50vh);
+  grid-template-rows: repeat(3, 50vh);
   grid-gap: 20px;
-  height: 150vh;
+  height: 160vh;
   width: 100vw;
   place-items: center;
 `;

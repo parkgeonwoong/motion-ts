@@ -14,6 +14,7 @@ export const Drag = () => {
             backgroundColor: "#fbc531",
             transition: { duration: 1 },
           }}
+          style={{ width: "80px", height: "80px", borderRadius: "20px" }}
         ></Box>
       </Container>
       <span>Drag</span>

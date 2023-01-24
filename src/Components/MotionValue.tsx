@@ -7,7 +7,7 @@ export const MotionValue = ({ x }: any) => {
   return (
     <Wrapper>
       <Box drag="x" style={{ x, rotateZ: Trans }} dragSnapToOrigin />
-      <span>motionValue</span>
+      <span>⇠ ⇢ motionValue</span>
     </Wrapper>
   );
 };
