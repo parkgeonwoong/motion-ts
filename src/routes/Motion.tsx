@@ -16,13 +16,13 @@ import styled from "styled-components";
 import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
 import { useEffect } from "react";
 
-import { Animation } from "./Components/Motions/Animation";
-import { Variants } from "./Components/Motions/Variants";
-import { Gestures } from "./Components/Motions/Gestures";
-import { SvgPath } from "./Components/Motions/SvgPath";
-import { MotionValue } from "./Components/Motions/MotionValue";
-import { ScrollView } from "./Components/Motions/ScrollView";
-import { Drag } from "./Components/Motions/Drag";
+import { Animation } from "../Components/Motions/Animation";
+import { Variants } from "../Components/Motions/Variants";
+import { Gestures } from "../Components/Motions/Gestures";
+import { SvgPath } from "../Components/Motions/SvgPath";
+import { MotionValue } from "../Components/Motions/MotionValue";
+import { ScrollView } from "../Components/Motions/ScrollView";
+import { Drag } from "../Components/Motions/Drag";
 
 // TODO: Variants
 
