@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import App from "./routes/App";
 import Motion from "./routes/Motion";
-import Slider from "./routes/Slider";
+import Presence from "./routes/Presence";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
         element: <Motion />,
       },
       {
-        path: "slider",
-        element: <Slider />,
+        path: "presence",
+        element: <Presence />,
       },
     ],
   },

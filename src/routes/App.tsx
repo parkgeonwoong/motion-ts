@@ -38,7 +38,7 @@ function App() {
         </Box>
 
         <Box whileHover={{ scale: 1.2, transition: { duration: 0.8 } }}>
-          <Link to="slider">Slider</Link>
+          <Link to="presence">Presence</Link>
         </Box>
 
         <Box whileHover={{ scale: 1.2, transition: { duration: 0.8 } }}>
