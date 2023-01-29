@@ -1,5 +1,5 @@
 /**
- * @desc:
+ * @desc: 제거되는 시기를 감지하여 작동
  * TODO:
  * 1. AnimatePresence
  */

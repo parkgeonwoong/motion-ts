@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import App from "./routes/App";
+import Layout from "./routes/Layout";
 import Motion from "./routes/Motion";
 import Presence from "./routes/Presence";
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "presence",
         element: <Presence />,
+      },
+      {
+        path: "layout",
+        element: <Layout />,
       },
     ],
   },

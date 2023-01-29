@@ -13,7 +13,7 @@
  */
 
 import styled from "styled-components";
-import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect } from "react";
 
 import { Animation } from "../Components/Motions/Animation";

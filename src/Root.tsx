@@ -7,6 +7,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 const Root = () => {
   const navigate = useNavigate();
@@ -14,14 +15,15 @@ const Root = () => {
   return (
     <>
       <Outlet />
-      <Home onClick={() => navigate("/")}>
+
+      <Home onClick={() => navigate("/")} whileHover={{ y: -8 }}>
         <AiOutlineHome style={{ fontWeight: "bold" }} />
       </Home>
     </>
   );
 };
 
-const Home = styled.button`
+const Home = styled(motion.button)`
   position: fixed;
   bottom: 1rem;
   right: 0.6rem;

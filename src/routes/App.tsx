@@ -2,14 +2,15 @@
  * @desc: 최상단 메인 페이지
  * NOTE:
  * - Motion 페이지
- * - Slider 페이지
- * -
+ * - Presence 페이지
+ * - Layout 페이지
  */
 
 import { motion } from "framer-motion";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+// Variants
 const HandVars = {
   start: { rotateZ: 0 },
   end: {
@@ -20,6 +21,10 @@ const HandVars = {
       repeatDelay: 1,
     },
   },
+};
+
+const whileHover = {
+  hover: { scale: 1.2, transition: { duration: 0.8 } },
 };
 
 function App() {
@@ -33,16 +38,16 @@ function App() {
       </Title>
 
       <Wrapper>
-        <Box whileHover={{ scale: 1.2, transition: { duration: 0.8 } }}>
+        <Box variants={whileHover} whileHover="hover">
           <Link to="motion">Motion</Link>
         </Box>
 
-        <Box whileHover={{ scale: 1.2, transition: { duration: 0.8 } }}>
+        <Box variants={whileHover} whileHover="hover">
           <Link to="presence">Presence</Link>
         </Box>
 
-        <Box whileHover={{ scale: 1.2, transition: { duration: 0.8 } }}>
-          empty
+        <Box variants={whileHover} whileHover="hover">
+          <Link to="layout">Layout</Link>
         </Box>
       </Wrapper>
     </Container>
