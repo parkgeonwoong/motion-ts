@@ -5,29 +5,34 @@ import Layout from "./routes/Layout";
 import Motion from "./routes/Motion";
 import Presence from "./routes/Presence";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Root />,
+      children: [
+        {
+          path: "",
+          element: <App />,
+        },
+        {
+          path: "motion",
+          element: <Motion />,
+        },
+        {
+          path: "presence",
+          element: <Presence />,
+        },
+        {
+          path: "layout",
+          element: <Layout />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Root />,
-    children: [
-      {
-        path: "",
-        element: <App />,
-      },
-      {
-        path: "motion",
-        element: <Motion />,
-      },
-      {
-        path: "presence",
-        element: <Presence />,
-      },
-      {
-        path: "layout",
-        element: <Layout />,
-      },
-    ],
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
 
 export default router;
