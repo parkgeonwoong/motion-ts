@@ -350,7 +350,7 @@ Error generating stack: `+o.message+`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-`,dR=xS([{path:"/",element:V(ET,{}),children:[{path:"",element:V(RT,{})},{path:"motion",element:V(rR,{})},{path:"presence",element:V(cR,{})},{path:"layout",element:V(bT,{})}]}]),hR=CC`
+`,dR=xS([{path:"/",element:V(ET,{}),children:[{path:"",element:V(RT,{})},{path:"motion",element:V(rR,{})},{path:"presence",element:V(cR,{})},{path:"layout",element:V(bT,{})}]}],{basename:"/motion-ts/"}),hR=CC`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
 
 html, body, div, span, applet, object, iframe,
