@@ -1,20 +1,18 @@
 /**
  * @desc : Layout 화면
  * TODO:
- * - layour props 사용
- * - layoutId 같은 컴포넌트 가리키기
- * - AnimatePresence
+ * 1. layour props 사용
+ * 2. layoutId 같은 컴포넌트 가리키기
+ * 3. AnimatePresence
  */
 
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Switch } from "../Components/Layouts/Switch";
 import { Between } from "../Components/Layouts/Between";
-import { useState } from "react";
+import { Card } from "../Components/Layouts/Card";
 
 function Layout() {
-  const [clicked, setClicked] = useState(false);
-  const toggle = () => setClicked((prev) => !prev);
   return (
     <Container>
       <Grid>
@@ -25,25 +23,8 @@ function Layout() {
         <Between />
       </Grid>
 
-      <CardWrapper onClick={toggle}>
-        <CardGrid>
-          <Box layoutId="hello" />
-          <Box />
-          <Box />
-          <Box />
-        </CardGrid>
-        <AnimatePresence>
-          {clicked ? (
-            <Overlay
-              initial={{ backgroundColor: "rgba(0, 0, 0, 0)" }}
-              animate={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-              exit={{ backgroundColor: "rgba(0, 0, 0, 0)" }}
-            >
-              <Box layoutId="hello" style={{ width: 400, height: 200 }} />
-            </Overlay>
-          ) : null}
-        </AnimatePresence>
-      </CardWrapper>
+      {/* TODO: 카드 컴포넌트 */}
+      <Card />
     </Container>
   );
 }
@@ -62,42 +43,6 @@ const Grid = styled(motion.div)`
   width: 100vw;
   height: 50vh;
   place-items: center;
-`;
-
-const CardWrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const CardGrid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: 50vw;
-  height: 50vh;
-  gap: 10px;
-
-  div:first-child,
-  div:last-child {
-    grid-column: span 2;
-  }
-`;
-
-const Box = styled(motion.div)`
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 40px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
-`;
-
-const Overlay = styled(motion.div)`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export default Layout;

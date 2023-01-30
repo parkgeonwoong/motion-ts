@@ -24,7 +24,10 @@ const HandVars = {
 };
 
 const whileHover = {
-  hover: { scale: 1.2, transition: { duration: 0.8 } },
+  hover: {
+    scale: 1.2,
+    transition: { duration: 0.8 },
+  },
 };
 
 function App() {
